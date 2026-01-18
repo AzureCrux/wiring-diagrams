@@ -1,0 +1,7 @@
+.env/
+output
+*.svg
+*.png
+*.html
+*.tsv
+*.DS_STORE

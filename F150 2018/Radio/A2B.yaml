@@ -1,0 +1,27 @@
+connectors:
+  C-A1:
+    type: 8-pin
+    subtype: male
+    # color: bk
+    # notes: A2B input
+    pincount: 8
+    pins: [1,2,4,8]
+    pinlabels: [CAN+, CAN-, BATT+, GND]
+  C-A2:
+    type: DT
+    subtype: female
+    color: BK
+    pincount: 4
+
+cables:
+  W3001:
+    gauge: 18 AWG
+    length: 1.5 ft
+    shield: false
+    wirecount: 3
+
+connections:
+  - 
+    - C-A1: [4,8]
+    - W3001: [1,2]
+    - C-A2: [1,4]
