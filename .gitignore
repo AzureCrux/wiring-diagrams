@@ -2,6 +2,7 @@
 output
 *.svg
 *.png
+!assets/**/*.png
 *.html
 *.tsv
 *.DS_STORE
