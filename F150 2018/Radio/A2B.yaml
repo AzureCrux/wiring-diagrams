@@ -1,19 +1,98 @@
 connectors:
   C-A1:
-    type: 8-pin
+    type: 
     subtype: male
-    # color: bk
-    # notes: A2B input
-    pincount: 8
-    pins: [1,2,4,8]
-    pinlabels: [CAN+, CAN-, BATT+, GND]
+    color: BK
+    notes: A2B input
+    pincount: 10
+    pins: [1,2,5,6,10]
+    pinlabels:
+      - GND(-)
+      - Remote OUT
+      - CAN HI
+      - BATT(+)
+      - CAN LO
+    pincolors: [BK, BU, VTBU, YE, VT]
+    image:
+      src: ..\..\assets\F150 2018\connectors\C-A1.png
   C-A2:
     type: DT
     subtype: female
     color: BK
     pincount: 4
+  C-R1:
+    type: Relay Module
+    subtype: female
+    pincount: 5
+    pinlabels: [VCC, GND, IN, NO, COM, NC]
+  C3154A:
+    type: OEM
+    subtype: female
+    pincount: 20
+    pins:
+      - 1
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      - 14
+      - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
+    pinlabels: 
+      - CAN HI
+      - Center Channel (-)
+      - Subwoofer COIL 1 (-)
+      - Right Front Door (-)
+      - Left Front Door (-)
+      - Right Rear Door (-)
+      - Subwoofer COIL 2 (-)
+      - Left Rear Door (-)
+      - CAN LO
+      - Center Channel (+)
+      - Subwoofer COIL 1 (+)
+      - Right Front Door (+)
+      - Left Front Door (+)
+      - Right Rear Door (+)
+      - Subwoofer COIL 2 (+)
+      - Left Rear Door (+)
+    pincolors:
+      - GNBU
+      - GYYE
+      - GY
+      - WHOG
+      - WHBN
+      - BNBU
+      - YE
+      - BNYE
+      - WHGN
+      - GN
+      - GNVT
+      - WHVT
+      - WH
+      - BNWH
+      - VTOG
+      - WHGN
 
 cables:
+  WH3001:
+    length: 1.5 ft
+    wirecount: 10
+    pn: HAR325
+    notes: NAV-TV A2B harness
+
+  WH3002:
+    length: 1.5 ft
+    wirecount: 2
+  
+
   W3001:
     gauge: 18 AWG
     length: 1.5 ft
@@ -22,6 +101,12 @@ cables:
 
 connections:
   - 
-    - C-A1: [4,8]
-    - W3001: [1,2]
-    - C-A2: [1,4]
+    - C3154A: [1-20]
+  -
+    - C-A1: [2]
+    - WH3002: [1]
+    - C-R1: [3]
+  # - 
+  #   - C-A1: [4,8]
+  #   - W3001: [1,2]
+  #   - C-A2: [1,4]
