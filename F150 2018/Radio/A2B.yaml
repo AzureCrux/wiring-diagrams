@@ -1,5 +1,5 @@
 connectors:
-  C-A1:
+  CA3001:
     type: 
     subtype: male
     color: BK
@@ -13,18 +13,27 @@ connectors:
       - BATT(+)
       - CAN LO
     pincolors: [BK, BU, VTBU, YE, VT]
-    image:
-      src: ..\..\assets\F150 2018\connectors\C-A1.png
-  C-A2:
+    # image:
+    #   src: /../../assets/F150 2018/connectors/C-A1.png
+    pn: HAR325
+
+  CA3002F:
     type: DT
     subtype: female
-    color: BK
+    color: GY
     pincount: 4
+  CA3002M:
+    type: DT
+    subtype: male
+    color: GY
+    pincount: 4
+
   C-R1:
     type: Relay Module
     subtype: female
     pincount: 5
     pinlabels: [VCC, GND, IN, NO, COM, NC]
+    
   C3154A:
     type: OEM
     subtype: female
@@ -82,15 +91,25 @@ connectors:
       - WHGN
 
 cables:
-  WH3001:
-    length: 1.5 ft
-    wirecount: 10
-    pn: HAR325
-    notes: NAV-TV A2B harness
-
-  WH3002:
-    length: 1.5 ft
+  W3001:
+    length: 1 ft
     wirecount: 2
+    notes: CAN HI/LO twisted pair, part of HAR325
+
+  W3002:
+    length: 1 ft
+    wirecount: 1
+    notes: part of HAR325
+  W3003:
+    length: 1 ft
+    wirecount: 1
+    notes: part of HAR325
+  W3004:
+    length: 1 ft
+    wirecount: 1
+    notes: part of HAR325
+
+
   
 
   W3001:
@@ -103,10 +122,10 @@ connections:
   - 
     - C3154A: [1-20]
   -
-    - C-A1: [2]
-    - WH3002: [1]
+    - CA3001: [2]
+    - W3002: [1]
     - C-R1: [3]
   # - 
-  #   - C-A1: [4,8]
+  #   - CA3001: [4,8]
   #   - W3001: [1,2]
-  #   - C-A2: [1,4]
+  #   - CA3002: [1,4]
