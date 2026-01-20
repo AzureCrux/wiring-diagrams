@@ -67,7 +67,8 @@ connectors:
 cables:
   W3001:
     length: 1 ft
-    wirecount: 2
+    wirecount: 4
+    colors: [BK, YE, VTWH, VT]
     notes: CAN HI/LO twisted pair, part of HAR325
 
   W3002:
@@ -83,15 +84,6 @@ cables:
     wirecount: 1
     notes: part of HAR325
 
-
-  
-
-  W3001:
-    gauge: 18 AWG
-    length: 1.5 ft
-    shield: false
-    wirecount: 3
-
 connections:
   - 
     - C3154A: [1-20]
@@ -99,6 +91,11 @@ connections:
     - CA3001: [2]
     - W3002: [1]
     - C-R1: [3]
+
+  -
+    - CA3001: [1,5,6,10]
+    - W3001: [1,3,2,4]
+    - CA3002F: [4,2,1,3]
   # - 
   #   - CA3001: [4,8]
   #   - W3001: [1,2]
