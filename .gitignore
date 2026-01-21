@@ -5,4 +5,5 @@ output
 !assets/**/*.png
 *.html
 *.tsv
-*.DS_STORE
+.DS_Store
+._*

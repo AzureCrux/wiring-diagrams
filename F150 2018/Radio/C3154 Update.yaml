@@ -1,0 +1,64 @@
+connectors:
+  C3154A:
+    type: OEM
+    subtype: Male
+    pincount: 20
+    pins: [
+      1, 4, 5, 6, 7, 8, 9, 10, 11, 
+      14, 15, 16, 17, 18, 19, 20
+    ]
+    pinlabels: 
+      - CAN HI
+      - Center Channel (-)
+      - Subwoofer COIL 1 (-)
+      - Right Front Door (-)
+      - Left Front Door (-)
+      - Right Rear Door (-)
+      - Subwoofer COIL 2 (-)
+      - Left Rear Door (-)
+      - CAN LO
+      - Center Channel (+)
+      - Subwoofer COIL 1 (+)
+      - Right Front Door (+)
+      - Left Front Door (+)
+      - Right Rear Door (+)
+      - Subwoofer COIL 2 (+)
+      - Left Rear Door (+)
+    pincolors: [
+      GNBU, GYYE, GY, WHOG, WHBN, BNBU, YE, BNYE, WHGN, 
+      GN, GNVT, WHVT, WH, BNWH, VTOG, WHGN
+    ]
+  C3154B:
+    type: OEM
+    subtype: Male
+    pincount: 8
+    pins: [1,4,5,8]
+  CA3010:
+    type: DTM
+    color: GY
+    pincount: 12
+
+  CA3011:
+    type: DTM
+    color: GY
+    pincount: 4
+
+cables:
+  W3010:
+    wirecount: 4
+    colors: [WH, WHVT, WHBN, WHOG]
+  W3011:
+    wirecount: 4
+    colors: [WHGN, BNWH, BNYE, BNBU]
+
+
+connections:
+  -
+    - C3154A: [17,16,7,6]
+    - W3010: [1-4]
+    - CA3010: [1,4,7,9]
+  - 
+    - C3154A: [20,18,10,8]
+    - W3011: [1-4]
+    - CA3011: [1-4]
+    
