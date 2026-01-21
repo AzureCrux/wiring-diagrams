@@ -1,3 +1,13 @@
+templates:
+  - &tmp_DTM-4F
+    type: DTM
+    color: GY
+    subtype: female
+    pins: 4
+  - &RCA
+    type: RCA
+    pins: 2
+    notes: RCA pair. Each "pin" represents a shielded wire pair
 connectors:
   CA3001:
     type: 
@@ -17,22 +27,66 @@ connectors:
     #   src: /../../assets/F150 2018/connectors/C-A1.png
     pn: HAR325
 
-  CA3002F:
-    type: DT
-    subtype: female
-    color: GY
-    pincount: 4
-  CA3002M:
-    type: DT
-    subtype: male
-    color: GY
-    pincount: 4
+  CA3002:
+    <<: tmp_DTM-4F
+  CA3003:
+    <<: tmp_DTM-4F
 
   C-R1:
     type: Relay Module
     subtype: female
     pincount: 5
     pinlabels: [VCC, GND, IN, NO, COM, NC]
+  
+  M-A100:
+    notes: Skar Power Dist
+  M-A101:
+    notes: Skar Audio in
+  M-A102:
+    notes: Audio out 
+  M-A200: 
+
+  SP-101:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FL Door
+  SP-102:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FL Mid
+  SP-103:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FL Tweeter
+  SP-104:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FR Door
+  SP-105:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FR Mid
+  SP-106:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: FR Tweeter
+  SP-107:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: RL Door
+  SP-108:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: RR Door
+  SP-109:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: SW - Left
+  SP-110:
+    pins: 2
+    pinlabels: [Pos (+), Neg (-)]
+    notes: SW - Right
+  
     
   C3154A:
     type: OEM
@@ -59,10 +113,6 @@ connectors:
       - Right Rear Door (+)
       - Subwoofer COIL 2 (+)
       - Left Rear Door (+)
-    pincolors: [
-      GNBU, GYYE, GY, WHOG, WHBN, BNBU, YE, BNYE, WHGN, 
-      GN, GNVT, WHVT, WH, BNWH, VTOG, WHGN
-    ]
 
 cables:
   W3001:
@@ -71,13 +121,17 @@ cables:
     colors: [BK, YE, VTWH, VT]
     notes: CAN HI/LO twisted pair, part of HAR325
 
+  #remote
   W3002:
     length: 1 ft
     wirecount: 1
+    colors: [BU]
     notes: part of HAR325
+
+
   W3003:
     length: 1 ft
-    wirecount: 1
+    wirecount: 12
     notes: part of HAR325
   W3004:
     length: 1 ft
@@ -87,15 +141,15 @@ cables:
 connections:
   - 
     - C3154A: [1-20]
+  #CA3001 (A2B) remote out to amps
   -
     - CA3001: [2]
     - W3002: [1]
     - C-R1: [3]
-
   -
     - CA3001: [1,5,6,10]
     - W3001: [1,3,2,4]
-    - CA3002F: [4,2,1,3]
+    - CA3002: [4,2,1,3]
   # - 
   #   - CA3001: [4,8]
   #   - W3001: [1,2]

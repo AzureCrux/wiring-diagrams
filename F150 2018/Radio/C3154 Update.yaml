@@ -1,3 +1,9 @@
+templates:
+  &tmp_DTM-4F
+    type: DTM
+    color: GY
+    subtype: female
+    pincount: 4
 connectors:
   C3154A:
     type: OEM
@@ -11,58 +17,129 @@ connectors:
       - CAN HI
       - Center Channel (-)
       - Subwoofer COIL 1 (-)
-      - Right Front Door (-)
-      - Left Front Door (-)
-      - Right Rear Door (-)
+      - FR Door Speaker (-)
+      - FL Door Speaker (-)
+      - RR Door Speaker (-)
       - Subwoofer COIL 2 (-)
-      - Left Rear Door (-)
+      - LR Door Speaker (-)
       - CAN LO
       - Center Channel (+)
       - Subwoofer COIL 1 (+)
-      - Right Front Door (+)
-      - Left Front Door (+)
-      - Right Rear Door (+)
+      - FR Door Speaker (+)
+      - FL Door Speaker (+)
+      - RR Door Speaker (+)
       - Subwoofer COIL 2 (+)
-      - Left Rear Door (+)
-    pincolors: [
-      GNBU, GYYE, GY, WHOG, WHBN, BNBU, YE, BNYE, WHGN, 
-      GN, GNVT, WHVT, WH, BNWH, VTOG, WHGN
-    ]
+      - LR Door Speaker (+)
+    image:
+      src: ../../assets/F150 2018/connectors/C3154A.png
   C3154B:
     type: OEM
     subtype: Male
     pincount: 8
     pins: [1,4,5,8]
+    pinlabels:
+      - BATT (+)
+      - GND (-)
+      - BATT (+)
+      - GND (-)
+    image:
+      src: ../../assets/F150 2018/connectors/C3154B.png
   CA3002:
-  
+    <<: *tmp_DTM-4F
+    pinlabels:
+      - BATT (+)
+      - CAN HI
+      - GND (-)
+      - CAN LO
+    notes: To A2B Module
+  CA3003:
+    <<: *tmp_DTM-4F
+    pincount: 3
+    pinlabels: 
+      - BATT (+)
+      - Remote Turn on Sense
+      - GND (-)
+    notes: To Remote turn-on relay module (M-R1)
   CA3010:
     type: DTM
     color: GY
     pincount: 12
-    notes: Connector for front stage. Will eventually be 6-channel
-
+    pinlabels:
+      - FL Door Speaker (+)
+      - FL Mid Speaker (+)
+      - FL High Speaker (+)
+      - FR Door Speaker (+)
+      - FR Mid Speaker (+)
+      - FR High Speaker (+)
+      - FL Door Speaker (-)
+      - FL Mid Speaker (-)
+      - FL High Speaker (-)
+      - FR Door Speaker (-)
+      - FR Mid Speaker (-)
+      - FR High Speaker (-)
+    notes: |
+      Connector for front stage. 
+      Will eventually be 6-channel
   CA3011:
     type: DTM
     color: GY
     pincount: 4
+    pinlabels:
+      - LR Door Speaker (+)
+      - RR Door Speaker (+)
+      - LR Door Speaker (-)
+      - RR Door Speaker (-)
     notes: Connector for rear speakers
 
 cables:
-  W3010:
+  W9910:
     wirecount: 4
     colors: [WH, WHVT, WHBN, WHOG]
-  W3011:
+  W9911:
+    category: bundle
+    show_wirecount: false
     wirecount: 4
     colors: [WHGN, BNWH, BNYE, BNBU]
+  W9912:
+    category: bundle
+    wirecount: 4
+    colors: [BNRD, BKVT, GNBU, WHGN]
+  W9913: 
+    category: bundle
+    wirecount: 2
+    colors: [BNRD, BKVT]
+  W9914: 
+    category: bundle
+    wirecount: 2
+    colors: [GNBU, WHGN]
+  W9999:
+    wirecount: 6
+    colors: [GYYE, GY, YE, GN, GNVT, VTOG]
+    notes: unused wires (cap and set aside)
 
 
 connections:
   -
     - C3154A: [17,16,7,6]
-    - W3010: [1-4]
-    - CA3010: [1,4,7,9]
+    - W9910: [1-4]
+    - CA3010: [1,4,7,10]
   - 
     - C3154A: [20,18,10,8]
-    - W3011: [1-4]
+    - W9911: [1-4]
     - CA3011: [1-4]
-    
+  - 
+    - C3154A: [1,11]
+    - W9912: [3,4]
+    - CA3002: [2,4]
+  - 
+    - C3154B: [4,1]
+    - W9912: [1,2]
+    - CA3002: [1,3]
+  - 
+    - C3154B: [8,5]
+    - W9913: [1,2]
+    - CA3003: [1,3]
+  -
+    - C3154A: [4,5,9,14,15,19]
+    - W9999: [1-6]
+    # - CA9999: [1-6]
