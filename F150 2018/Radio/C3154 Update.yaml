@@ -33,15 +33,19 @@ connectors:
     subtype: Male
     pincount: 8
     pins: [1,4,5,8]
+  CA3002:
+  
   CA3010:
     type: DTM
     color: GY
     pincount: 12
+    notes: Connector for front stage. Will eventually be 6-channel
 
   CA3011:
     type: DTM
     color: GY
     pincount: 4
+    notes: Connector for rear speakers
 
 cables:
   W3010:
