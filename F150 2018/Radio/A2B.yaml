@@ -3,10 +3,10 @@ templates:
     type: DTM
     color: GY
     subtype: female
-    pins: 4
+    pincount: 4
   - &RCA
     type: RCA
-    pins: 2
+    pincount: 2
     notes: RCA pair. Each "pin" represents a shielded wire pair
 connectors:
   CA3001:
@@ -28,9 +28,15 @@ connectors:
     pn: HAR325
 
   CA3002:
-    <<: tmp_DTM-4F
+    <<: *tmp_DTM-4F
+    pinlabels:
+      - BATT (+)
+      - CAN HI
+      - GND (-)
+      - CAN LO
+    notes: from OEM C3154A
   CA3003:
-    <<: tmp_DTM-4F
+    <<: *tmp_DTM-4F
 
   C-R1:
     type: Relay Module
@@ -44,46 +50,46 @@ connectors:
     notes: Skar Audio in
   M-A102:
     notes: Audio out 
-  M-A200: 
+  # M-A200: 
 
   SP-101:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FL Door
   SP-102:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FL Mid
   SP-103:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FL Tweeter
   SP-104:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FR Door
   SP-105:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FR Mid
   SP-106:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: FR Tweeter
   SP-107:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: RL Door
   SP-108:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: RR Door
   SP-109:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: SW - Left
   SP-110:
-    pins: 2
+    pincount: 2
     pinlabels: [Pos (+), Neg (-)]
     notes: SW - Right
   
@@ -139,17 +145,14 @@ cables:
     notes: part of HAR325
 
 connections:
-  - 
-    - C3154A: [1-20]
-  #CA3001 (A2B) remote out to amps
   -
     - CA3001: [2]
     - W3002: [1]
     - C-R1: [3]
-  -
-    - CA3001: [1,5,6,10]
-    - W3001: [1,3,2,4]
-    - CA3002: [4,2,1,3]
+  # -
+  #   - CA3001: [1,5,6,10]
+  #   - W3001: [1,3,2,4]
+  #   - CA3002: [4,2,1,3]
   # - 
   #   - CA3001: [4,8]
   #   - W3001: [1,2]
